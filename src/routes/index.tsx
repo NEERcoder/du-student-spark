@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/Navbar";
-import { Hero } from "@/components/Hero";
+import { CollegeHero } from "@/components/CollegeHero";
+import { FeaturedColleges } from "@/components/FeaturedColleges";
+import { FreeGuidance } from "@/components/FreeGuidance";
 import { Features } from "@/components/Features";
-import { Plans } from "@/components/Plans";
 import { Reviews } from "@/components/Reviews";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
@@ -10,15 +11,20 @@ import { Footer } from "@/components/Footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "DU Science Hub — Real College Reviews. Smarter DU Admissions." },
+      { title: "Find Your Perfect DU College — DU Science Hub" },
       {
         name: "description",
         content:
-          "Honest student reviews of Delhi University colleges, CUET cutoff insights, and 1:1 admission guidance from real DU seniors. Plan your DU admission smarter.",
+          "Search every Delhi University college. Compare courses, campus life, placements and student reviews — and talk to verified DU senior mentors over WhatsApp.",
       },
-      { property: "og:title", content: "DU Science Hub — Real DU Reviews & Admission Help" },
-      { property: "og:description", content: "Verified DU student reviews, cutoffs and 1:1 counselling." },
+      { property: "og:title", content: "Find Your Perfect DU College — DU Science Hub" },
+      {
+        property: "og:description",
+        content:
+          "Explore DU colleges, courses, reviews and admission insights. Free guidance from senior mentors.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -31,9 +37,10 @@ function Index() {
     <div className="min-h-screen bg-background">
       <Navbar />
       <main>
-        <Hero />
+        <CollegeHero />
+        <FeaturedColleges />
+        <FreeGuidance />
         <Features />
-        <Plans />
         <Reviews />
         <CTA />
       </main>
