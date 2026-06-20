@@ -32,31 +32,32 @@
   --color-brand: var(--brand);
   --color-brand-foreground: var(--brand-foreground);
   --color-gold: var(--gold);
-  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-display: "Fira Sans", system-ui, sans-serif;
+  --font-sans: "Fira Sans", system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.75rem;
-  --background: oklch(0.99 0.005 30);
-  --foreground: oklch(0.18 0.02 20);
+  --radius: 0.875rem;
+  --background: oklch(0.99 0.005 250);
+  --foreground: oklch(0.18 0.04 250);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.02 20);
+  --card-foreground: oklch(0.18 0.04 250);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.02 20);
+  --popover-foreground: oklch(0.18 0.04 250);
   --primary: oklch(0.58 0.22 25);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.96 0.01 30);
-  --secondary-foreground: oklch(0.2 0.02 20);
-  --muted: oklch(0.96 0.01 30);
-  --muted-foreground: oklch(0.48 0.02 20);
+  --secondary: oklch(0.96 0.02 250);
+  --secondary-foreground: oklch(0.22 0.06 250);
+  --muted: oklch(0.96 0.015 250);
+  --muted-foreground: oklch(0.48 0.04 250);
   --accent: oklch(0.95 0.04 25);
   --accent-foreground: oklch(0.25 0.05 25);
   --destructive: oklch(0.58 0.22 25);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.92 0.01 30);
-  --input: oklch(0.92 0.01 30);
+  --border: oklch(0.91 0.015 250);
+  --input: oklch(0.91 0.015 250);
   --ring: oklch(0.58 0.22 25);
-  --brand: oklch(0.58 0.22 25);
+  --brand: oklch(0.32 0.13 260);
   --brand-foreground: oklch(0.99 0 0);
   --gold: oklch(0.82 0.16 85);
 }
@@ -102,10 +103,10 @@
     border: 1px solid color-mix(in oklab, var(--foreground) 8%, transparent);
   }
   .brand-gradient {
-    background: linear-gradient(135deg, oklch(0.62 0.24 28), oklch(0.5 0.22 18));
+    background: linear-gradient(135deg, oklch(0.32 0.13 260), oklch(0.5 0.22 18));
   }
   .text-gradient-brand {
-    background: linear-gradient(90deg, oklch(0.58 0.22 25), oklch(0.45 0.2 15));
+    background: linear-gradient(90deg, oklch(0.32 0.13 260), oklch(0.55 0.22 25));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
