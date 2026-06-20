@@ -56,7 +56,10 @@ function CollegesPage() {
 
   function setFilter(key: "stream" | "category", value: string) {
     navigate({
-      search: (prev) => ({ ...prev, [key]: prev[key] === value ? "" : value }),
+      search: (prev: { q: string; stream: string; category: string }) => ({
+        ...prev,
+        [key]: prev[key] === value ? "" : value,
+      }),
     });
   }
 
