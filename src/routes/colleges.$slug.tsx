@@ -96,7 +96,8 @@ function initials(name: string) {
 }
 
 function CollegePage() {
-  const { college } = Route.useLoaderData();
+  const data = Route.useLoaderData() as { college: import("@/data/colleges").College };
+  const { college } = data;
 
   return (
     <div className="min-h-screen bg-background">
