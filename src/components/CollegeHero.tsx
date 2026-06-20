@@ -1,4 +1,4 @@
-import { MessageCircle, Users, Sparkles } from "lucide-react";
+import { MessageCircle, Users, Sparkles, Youtube } from "lucide-react";
 import { waLink } from "@/lib/whatsapp";
 import { CollegeSearch } from "./CollegeSearch";
 import { colleges } from "@/data/colleges";
@@ -56,6 +56,14 @@ export function CollegeHero() {
             className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-6 py-3 text-sm font-bold hover:bg-accent"
           >
             <Users className="h-5 w-5" /> Talk to a Senior on WhatsApp
+          </a>
+          <a
+            href="https://www.youtube.com/@DUScienceHub"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-sm font-bold text-white shadow-brand transition hover:bg-red-700"
+          >
+            <Youtube className="h-5 w-5" /> Watch the Detailed review on YouTube
           </a>
         </div>
       </div>
