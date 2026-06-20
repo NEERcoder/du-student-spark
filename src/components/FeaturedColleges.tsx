@@ -37,10 +37,17 @@ export function FeaturedColleges() {
           Explore all {colleges.length} colleges <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
-      <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {list.map((c) => (
-          <CollegeCard key={c.slug} college={c} />
-        ))}
+      <div
+        className="mt-8 -mx-4 sm:-mx-6 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]"
+        aria-label="Featured DU colleges scrolling carousel"
+      >
+        <div className="flex w-max gap-5 animate-marquee hover:[animation-play-state:paused] px-4 sm:px-6">
+          {[...list, ...list].map((c, i) => (
+            <div key={`${c.slug}-${i}`} className="w-[280px] sm:w-[320px] shrink-0">
+              <CollegeCard college={c} />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
