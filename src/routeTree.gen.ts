@@ -10,8 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as CollegesRouteImport } from './routes/colleges'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CollegesIndexRouteImport } from './routes/colleges.index'
 import { Route as CollegesSlugRouteImport } from './routes/colleges.$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -19,53 +19,54 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CollegesRoute = CollegesRouteImport.update({
-  id: '/colleges',
-  path: '/colleges',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CollegesIndexRoute = CollegesIndexRouteImport.update({
+  id: '/colleges/',
+  path: '/colleges/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CollegesSlugRoute = CollegesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => CollegesRoute,
+  id: '/colleges/$slug',
+  path: '/colleges/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/colleges': typeof CollegesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/colleges/$slug': typeof CollegesSlugRoute
+  '/colleges/': typeof CollegesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/colleges': typeof CollegesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/colleges/$slug': typeof CollegesSlugRoute
+  '/colleges': typeof CollegesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/colleges': typeof CollegesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/colleges/$slug': typeof CollegesSlugRoute
+  '/colleges/': typeof CollegesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/colleges' | '/sitemap.xml' | '/colleges/$slug'
+  fullPaths: '/' | '/sitemap.xml' | '/colleges/$slug' | '/colleges/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/colleges' | '/sitemap.xml' | '/colleges/$slug'
-  id: '__root__' | '/' | '/colleges' | '/sitemap.xml' | '/colleges/$slug'
+  to: '/' | '/sitemap.xml' | '/colleges/$slug' | '/colleges'
+  id: '__root__' | '/' | '/sitemap.xml' | '/colleges/$slug' | '/colleges/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  CollegesRoute: typeof CollegesRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  CollegesSlugRoute: typeof CollegesSlugRoute
+  CollegesIndexRoute: typeof CollegesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -77,13 +78,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/colleges': {
-      id: '/colleges'
-      path: '/colleges'
-      fullPath: '/colleges'
-      preLoaderRoute: typeof CollegesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -91,32 +85,28 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/colleges/': {
+      id: '/colleges/'
+      path: '/colleges'
+      fullPath: '/colleges/'
+      preLoaderRoute: typeof CollegesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/colleges/$slug': {
       id: '/colleges/$slug'
-      path: '/$slug'
+      path: '/colleges/$slug'
       fullPath: '/colleges/$slug'
       preLoaderRoute: typeof CollegesSlugRouteImport
-      parentRoute: typeof CollegesRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
 
-interface CollegesRouteChildren {
-  CollegesSlugRoute: typeof CollegesSlugRoute
-}
-
-const CollegesRouteChildren: CollegesRouteChildren = {
-  CollegesSlugRoute: CollegesSlugRoute,
-}
-
-const CollegesRouteWithChildren = CollegesRoute._addFileChildren(
-  CollegesRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  CollegesRoute: CollegesRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  CollegesSlugRoute: CollegesSlugRoute,
+  CollegesIndexRoute: CollegesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
