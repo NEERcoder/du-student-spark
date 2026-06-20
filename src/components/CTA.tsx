@@ -1,5 +1,6 @@
 import { MessageCircle, Instagram } from "lucide-react";
-import { WHATSAPP_LINK, INSTAGRAM_LINK } from "@/lib/links";
+import { INSTAGRAM_LINK } from "@/lib/links";
+import { waLink } from "@/lib/whatsapp";
 
 export function CTA() {
   return (
@@ -8,16 +9,16 @@ export function CTA() {
         <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10 blur-2xl" />
         <div className="relative grid items-center gap-6 md:grid-cols-[1fr_auto]">
           <div>
-            <h2 className="text-3xl font-extrabold sm:text-4xl">Ready to crack DU?</h2>
+            <h2 className="text-3xl font-extrabold sm:text-4xl">Ready to find your DU college?</h2>
             <p className="mt-2 max-w-xl text-white/90">
-              Get on a free 15-minute call with our counsellors. We'll help you shortlist colleges,
-              decode cutoffs, and plan the smartest path to admission.
+              Hop on a free WhatsApp chat with a senior. We'll help you shortlist colleges,
+              decode CUET cutoffs, and plan the smartest preference sheet.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer"
+            <a href={waLink()} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-bold text-primary hover:bg-white/90">
-              <MessageCircle className="h-5 w-5" /> Chat on WhatsApp
+              <MessageCircle className="h-5 w-5" /> Connect Now
             </a>
             <a href={INSTAGRAM_LINK} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl border border-white/40 bg-white/10 px-6 py-3 text-sm font-bold text-white hover:bg-white/20">
