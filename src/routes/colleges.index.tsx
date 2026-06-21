@@ -163,11 +163,16 @@ function CollegesPage() {
             </Link>
           </div>
         ) : (
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filtered.map((c) => (
-              <CollegeCard key={c.slug} college={c} />
-            ))}
-          </div>
+          <>
+            <h2 className="sr-only">
+              {q ? "Search results" : "All Delhi University colleges"}
+            </h2>
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {filtered.map((c) => (
+                <CollegeCard key={c.slug} college={c} />
+              ))}
+            </div>
+          </>
         )}
       </main>
 
@@ -175,3 +180,4 @@ function CollegesPage() {
     </div>
   );
 }
+
