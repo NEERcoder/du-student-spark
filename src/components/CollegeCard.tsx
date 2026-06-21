@@ -26,16 +26,17 @@ function initials(name: string) {
 
 export function CollegeCard({ college }: { college: College }) {
   return (
-    <article className="group glass overflow-hidden rounded-2xl transition hover:-translate-y-1 hover:shadow-brand">
+    <article className="group glass hover-lift relative overflow-hidden rounded-2xl">
       <div
-        className="relative flex h-32 items-center justify-center"
+        className="relative flex h-32 items-center justify-center overflow-hidden"
         style={{ background: gradientFor(college.name) }}
         aria-hidden="true"
       >
-        <span className="text-3xl font-black tracking-wider text-white/90">
+        <span className="relative z-10 text-3xl font-black tracking-wider text-white/90 transition-transform duration-500 group-hover:scale-110">
           {initials(college.name)}
         </span>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+        <div className="absolute inset-y-0 -left-1/2 w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-1000 group-hover:translate-x-[300%]" />
       </div>
       <div className="p-4">
         <h3 className="line-clamp-2 text-base font-extrabold leading-snug">
@@ -59,9 +60,9 @@ export function CollegeCard({ college }: { college: College }) {
           <Link
             to="/colleges/$slug"
             params={{ slug: college.slug }}
-            className="inline-flex flex-1 items-center justify-center gap-1 rounded-lg bg-primary px-3 py-2 text-xs font-semibold text-primary-foreground transition hover:opacity-90"
+            className="shine inline-flex flex-1 items-center justify-center gap-1 rounded-lg bg-primary px-3 py-2 text-xs font-semibold text-primary-foreground transition hover:shadow-glow"
           >
-            View Profile <ArrowRight className="h-3.5 w-3.5" />
+            View Profile <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
           </Link>
           <a
             href={waLink(waMessages.guidance(college.name))}
