@@ -60,9 +60,9 @@ export function CollegeCard({ college }: { college: College }) {
           <Link
             to="/colleges/$slug"
             params={{ slug: college.slug }}
-            className="inline-flex flex-1 items-center justify-center gap-1 rounded-lg bg-primary px-3 py-2 text-xs font-semibold text-primary-foreground transition hover:opacity-90"
+            className="shine inline-flex flex-1 items-center justify-center gap-1 rounded-lg bg-primary px-3 py-2 text-xs font-semibold text-primary-foreground transition hover:shadow-glow"
           >
-            View Profile <ArrowRight className="h-3.5 w-3.5" />
+            View Profile <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
           </Link>
           <a
             href={waLink(waMessages.guidance(college.name))}
