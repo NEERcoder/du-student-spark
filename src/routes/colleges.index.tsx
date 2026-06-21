@@ -29,10 +29,35 @@ export const Route = createFileRoute("/colleges/")({
         property: "og:description",
         content: "Search every DU college and talk to a senior mentor.",
       },
-      { property: "og:url", content: "/colleges" },
+      { property: "og:type", content: "website" },
+      {
+        property: "og:url",
+        content: "https://du-student-spark.lovable.app/colleges",
+      },
     ],
-    links: [{ rel: "canonical", href: "/colleges" }],
+    links: [
+      { rel: "canonical", href: "https://du-student-spark.lovable.app/colleges" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Delhi University Colleges Directory",
+          description:
+            "Searchable directory of Delhi University colleges with reviews and senior mentor guidance.",
+          url: "https://du-student-spark.lovable.app/colleges",
+          isPartOf: {
+            "@type": "WebSite",
+            name: "DU Science Hub",
+            url: "https://du-student-spark.lovable.app",
+          },
+        }),
+      },
+    ],
   }),
+
   component: CollegesPage,
 });
 
@@ -138,11 +163,16 @@ function CollegesPage() {
             </Link>
           </div>
         ) : (
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filtered.map((c) => (
-              <CollegeCard key={c.slug} college={c} />
-            ))}
-          </div>
+          <>
+            <h2 className="sr-only">
+              {q ? "Search results" : "All Delhi University colleges"}
+            </h2>
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {filtered.map((c) => (
+                <CollegeCard key={c.slug} college={c} />
+              ))}
+            </div>
+          </>
         )}
       </main>
 
@@ -150,3 +180,4 @@ function CollegesPage() {
     </div>
   );
 }
+

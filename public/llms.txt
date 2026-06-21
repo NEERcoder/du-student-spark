@@ -1,0 +1,18 @@
+# DU Science Hub
+
+> Delhi University college discovery and mentorship platform. Search every DU college, compare courses, campus life, placements and reviews, and connect directly with verified senior mentors over WhatsApp.
+
+DU Science Hub helps students aspiring to Delhi University find the right college and stream. Each college profile covers quick facts, ratings, popular courses, highlights, campus life, infrastructure, placements, student reviews and admission insights. Free guidance from verified DU seniors is one click away.
+
+## Pages
+
+- [Home](/): Search DU colleges and book free guidance.
+- [All DU Colleges](/colleges): Searchable directory with filters by stream and category.
+
+## Example College Profiles
+
+- [Hindu College](/colleges/hindu-college)
+- [St. Stephen's College](/colleges/st-stephens-college)
+- [Lady Shri Ram College for Women](/colleges/lady-shri-ram-college-for-women)
+- [Miranda House](/colleges/miranda-house)
+- [Shri Ram College of Commerce](/colleges/shri-ram-college-of-commerce)
