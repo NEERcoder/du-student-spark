@@ -72,14 +72,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "DU Science Hub — Delhi University College Guide" },
+      {
+        name: "description",
+        content:
+          "Find your perfect Delhi University college. Search 90+ DU colleges, compare courses, reviews, placements and chat with verified senior mentors.",
+      },
+      { name: "author", content: "DU Science Hub" },
+      {
+        property: "og:title",
+        content: "DU Science Hub — Find Your Perfect Delhi University College",
+      },
+      {
+        property: "og:description",
+        content:
+          "Explore Delhi University colleges, courses, campus life and student reviews. Free admission guidance from verified DU senior mentors.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { property: "og:site_name", content: "DU Science Hub" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -90,7 +101,36 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700;800;900&display=swap",
       },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              name: "DU Science Hub",
+              url: "https://du-student-spark.lovable.app",
+              description:
+                "Delhi University college discovery and senior-mentor guidance platform.",
+            },
+            {
+              "@type": "WebSite",
+              name: "DU Science Hub",
+              url: "https://du-student-spark.lovable.app",
+              potentialAction: {
+                "@type": "SearchAction",
+                target:
+                  "https://du-student-spark.lovable.app/colleges?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            },
+          ],
+        }),
+      },
+    ],
   }),
+
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
