@@ -28,18 +28,53 @@ export const Route = createFileRoute("/colleges/$slug")({
     const desc =
       loaderData?.college.shortDescription ??
       "Explore this Delhi University college on DU Science Hub.";
+    const url = `https://du-student-spark.lovable.app/colleges/${params.slug}`;
+    const ratingMap: Record<string, number> = {
+      Excellent: 5,
+      "Very Good": 4,
+      Good: 3,
+      Average: 2,
+    };
+    const reviews = loaderData?.college.reviews ?? [];
+    const ratingValues = reviews
+      .map((r) => ratingMap[r.rating])
+      .filter((n): n is number => typeof n === "number");
+    const avg =
+      ratingValues.length > 0
+        ? (ratingValues.reduce((a, b) => a + b, 0) / ratingValues.length).toFixed(1)
+        : null;
+    const ld: Record<string, unknown> = {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      name,
+      description: desc,
+      url,
+    };
+    if (avg) {
+      ld.aggregateRating = {
+        "@type": "AggregateRating",
+        ratingValue: avg,
+        reviewCount: ratingValues.length,
+        bestRating: "5",
+        worstRating: "1",
+      };
+    }
     return {
       meta: [
-        { title: `${name} — Courses, Reviews, Placements | DU Science Hub` },
+        { title: `${name} — DU Science Hub` },
         { name: "description", content: desc },
         { property: "og:title", content: `${name} | DU Science Hub` },
         { property: "og:description", content: desc },
         { property: "og:type", content: "article" },
-        { property: "og:url", content: `/colleges/${params.slug}` },
+        { property: "og:url", content: url },
       ],
-      links: [{ rel: "canonical", href: `/colleges/${params.slug}` }],
+      links: [{ rel: "canonical", href: url }],
+      scripts: [
+        { type: "application/ld+json", children: JSON.stringify(ld) },
+      ],
     };
   },
+
   notFoundComponent: () => (
     <div className="min-h-screen bg-background">
       <Navbar />
