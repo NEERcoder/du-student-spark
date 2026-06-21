@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { colleges } from "@/data/colleges";
 
-const BASE_URL = "";
+const BASE_URL = "https://du-student-spark.lovable.app";
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
