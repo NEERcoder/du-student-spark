@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/Navbar";
 import { CollegeHero } from "@/components/CollegeHero";
+import { StatsStrip } from "@/components/StatsStrip";
 import { FeaturedColleges } from "@/components/FeaturedColleges";
+import { CourseExplorerPreview } from "@/components/CourseExplorerPreview";
 import { FreeGuidance } from "@/components/FreeGuidance";
 import { Features } from "@/components/Features";
 import { Reviews } from "@/components/Reviews";
@@ -38,7 +40,9 @@ function Index() {
       <Navbar />
       <main>
         <CollegeHero />
+        <StatsStrip />
         <FeaturedColleges />
+        <CourseExplorerPreview />
         <FreeGuidance />
         <Features />
         <Reviews />
