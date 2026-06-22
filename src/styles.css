@@ -63,25 +63,65 @@
 }
 
 .dark {
-  --background: oklch(0.14 0.02 20);
-  --foreground: oklch(0.98 0.005 30);
-  --card: oklch(0.19 0.02 20);
-  --card-foreground: oklch(0.98 0.005 30);
-  --popover: oklch(0.19 0.02 20);
-  --popover-foreground: oklch(0.98 0.005 30);
-  --primary: oklch(0.65 0.23 25);
-  --primary-foreground: oklch(0.1 0.01 20);
-  --secondary: oklch(0.24 0.02 20);
-  --secondary-foreground: oklch(0.98 0.005 30);
-  --muted: oklch(0.24 0.02 20);
-  --muted-foreground: oklch(0.7 0.02 30);
-  --accent: oklch(0.28 0.06 25);
-  --accent-foreground: oklch(0.98 0.005 30);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.65 0.23 25);
-  --brand: oklch(0.65 0.23 25);
-  --brand-foreground: oklch(0.1 0.01 20);
+  /* Deep navy canvas with premium red primary + deep blue brand */
+  --background: oklch(0.16 0.035 260);
+  --foreground: oklch(0.985 0.005 250);
+  --card: oklch(0.21 0.04 262);
+  --card-foreground: oklch(0.985 0.005 250);
+  --popover: oklch(0.2 0.04 262);
+  --popover-foreground: oklch(0.985 0.005 250);
+  --primary: oklch(0.66 0.24 22);
+  --primary-foreground: oklch(0.99 0.005 30);
+  --secondary: oklch(0.26 0.045 262);
+  --secondary-foreground: oklch(0.985 0.005 250);
+  --muted: oklch(0.24 0.04 262);
+  --muted-foreground: oklch(0.74 0.025 250);
+  --accent: oklch(0.3 0.07 262);
+  --accent-foreground: oklch(0.985 0.005 250);
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.66 0.24 22);
+  --brand: oklch(0.42 0.18 262);
+  --brand-foreground: oklch(0.99 0 0);
+  --gold: oklch(0.84 0.16 85);
+}
+
+/* Premium motion + structure utilities (Phase 1) */
+@layer utilities {
+  .floating-card {
+    background: color-mix(in oklab, var(--card) 75%, transparent);
+    backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
+    box-shadow:
+      0 30px 60px -28px color-mix(in oklab, var(--brand) 70%, transparent),
+      0 0 0 1px color-mix(in oklab, var(--foreground) 5%, transparent);
+  }
+  .ring-gradient {
+    position: relative;
+  }
+  .ring-gradient::before {
+    content: "";
+    position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+    background: linear-gradient(135deg,
+      color-mix(in oklab, var(--primary) 60%, transparent),
+      color-mix(in oklab, var(--brand) 70%, transparent));
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+  @keyframes float-slow {
+    0%,100% { transform: translateY(0) rotate(0); }
+    50%     { transform: translateY(-14px) rotate(-1deg); }
+  }
+  .animate-float-slow { animation: float-slow 11s ease-in-out infinite; }
+  @keyframes float-slower {
+    0%,100% { transform: translateY(0) rotate(0); }
+    50%     { transform: translateY(-22px) rotate(1.2deg); }
+  }
+  .animate-float-slower { animation: float-slower 14s ease-in-out infinite; }
 }
 
 @layer base {
