@@ -1,5 +1,6 @@
 import { Star } from "lucide-react";
-import { reviews } from "@/data/reviews";
+import { useQuery } from "@tanstack/react-query";
+import { listApprovedReviews } from "@/lib/content.functions";
 
 function initials(name: string) {
   return name.slice(0, 2).toUpperCase();
@@ -20,6 +21,12 @@ function Stars({ rating }: { rating: number }) {
 }
 
 export function Reviews() {
+  const { data: reviews = [] } = useQuery({
+    queryKey: ["reviews", "approved"],
+    queryFn: () => listApprovedReviews(),
+    staleTime: 60_000,
+  });
+
   return (
     <section id="reviews" className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-24">
       <div className="mx-auto max-w-2xl text-center">
@@ -29,29 +36,39 @@ export function Reviews() {
           Unfiltered reviews from students across Delhi University — the good, the messy, the real.
         </p>
       </div>
-      <div className="mt-12 columns-1 gap-6 sm:columns-2 lg:columns-3 [column-fill:_balance]">
-        {reviews.map((r, idx) => (
-          <article key={idx}
-            className="mb-6 break-inside-avoid rounded-2xl border border-border bg-card p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-brand glass">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full brand-gradient text-sm font-bold text-white">
-                {initials(r.name)}
+      {reviews.length === 0 ? (
+        <p className="mt-12 text-center text-sm text-muted-foreground">
+          Loading community reviews…
+        </p>
+      ) : (
+        <div className="mt-12 columns-1 gap-6 sm:columns-2 lg:columns-3 [column-fill:_balance]">
+          {reviews.map((r) => (
+            <article
+              key={r.id}
+              className="mb-6 break-inside-avoid rounded-2xl border border-border bg-card p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-brand glass"
+            >
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full brand-gradient text-sm font-bold text-white">
+                  {initials(r.author_name)}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-sm font-bold">{r.author_name}</p>
+                  <p className="truncate text-xs text-muted-foreground">
+                    {r.course ? `${r.course} · ` : ""}
+                    {r.college_name}
+                  </p>
+                </div>
+                <Stars rating={Number(r.rating)} />
               </div>
-              <div className="min-w-0 flex-1">
-                <p className="truncate text-sm font-bold">{r.name}</p>
-                <p className="truncate text-xs text-muted-foreground">
-                  {r.course ? `${r.course} · ` : ""}{r.college}
-                </p>
-              </div>
-              <Stars rating={r.rating} />
-            </div>
-            <p className="mt-4 text-sm leading-relaxed text-foreground/85">{r.text}</p>
-            <span className="mt-4 inline-block rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground">
-              {r.college}
-            </span>
-          </article>
-        ))}
-      </div>
+              <p className="mt-4 text-sm leading-relaxed text-foreground/85">{r.body}</p>
+              <span className="mt-4 inline-block rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground">
+                {r.college_name}
+              </span>
+            </article>
+          ))}
+        </div>
+      )}
     </section>
   );
 }
+
