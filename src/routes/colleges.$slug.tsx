@@ -134,9 +134,39 @@ function initials(name: string) {
     .toUpperCase();
 }
 
+function formatReviewDate(iso: string) {
+  return new Date(iso).toLocaleDateString("en-IN", { month: "short", year: "numeric" });
+}
+
 function CollegePage() {
   const data = Route.useLoaderData() as { college: import("@/data/colleges").College };
   const { college } = data;
+
+  const { data: dbReviews = [] } = useQuery({
+    queryKey: ["reviews", "by-slug", college.slug],
+    queryFn: () => listReviewsByCollegeSlug({ data: { slug: college.slug } }),
+    staleTime: 60_000,
+  });
+
+  const reviews = useMemo(() => {
+    const seenName = new Set<string>();
+    const seenBody = new Set<string>();
+    const unique = dbReviews.filter((r) => {
+      const n = r.author_name.trim().toLowerCase();
+      const b = r.body.trim().toLowerCase();
+      if (seenName.has(n) || seenBody.has(b)) return false;
+      seenName.add(n);
+      seenBody.add(b);
+      return true;
+    });
+    const arr = [...unique];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor((Math.sin(i * 9301 + 49297) + 1) / 2 * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }, [dbReviews]);
+
 
   return (
     <div className="min-h-screen bg-background">
