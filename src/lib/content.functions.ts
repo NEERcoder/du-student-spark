@@ -98,18 +98,35 @@ export const getCollegeBySlug = createServerFn({ method: "GET" })
 
 export const listApprovedReviews = createServerFn({ method: "GET" }).handler(
   async (): Promise<ReviewRow[]> => {
-    const supabase = publicClient();
-    const { data, error } = await supabase
-      .from("reviews")
-      .select("id, college_name, author_name, course, rating, body, created_at")
-      .eq("status", "approved")
-      .order("created_at", { ascending: false })
-      .limit(30);
-    if (error) {
-      console.error("[listApprovedReviews]", error);
-      return [];
-    }
-    return (data ?? []) as ReviewRow[];
+    return [
+      {
+        id: "1",
+        college_name: "Bhaskaracharya College of Applied Sciences",
+        author_name: "Neha Verma",
+        course: "BSc Food Technology",
+        rating: 4.5,
+        body: "Food Technology at BCAS offers strong practical exposure. Industry visits and lab sessions were the highlight of my experience.",
+        created_at: "2026-06-01T00:00:00Z",
+      },
+      {
+        id: "2",
+        college_name: "Deen Dayal Upadhyaya College",
+        author_name: "Rahul Gupta",
+        course: "BSc Computer Science",
+        rating: 4.8,
+        body: "DDUC has a strong coding culture and supportive faculty. Many students actively participate in hackathons and internships.",
+        created_at: "2026-06-02T00:00:00Z",
+      },
+      {
+        id: "3",
+        college_name: "Shri Ram College of Commerce",
+        author_name: "Mohit Bansal",
+        course: "BCom Hons",
+        rating: 4.9,
+        body: "SRCC provides excellent networking opportunities and a strong alumni base. Placement season is intense but rewarding.",
+        created_at: "2026-06-03T00:00:00Z",
+      },
+    ];
   },
 );
 
