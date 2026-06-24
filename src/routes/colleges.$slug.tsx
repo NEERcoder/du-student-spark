@@ -331,38 +331,61 @@ function CollegePage() {
 
         {/* Student Reviews */}
         <Section icon={<Star className="h-5 w-5" />} title="Student Reviews">
-          <div className="grid gap-4 sm:grid-cols-2">
-            {college.reviews.map((r, i) => (
-              <article
-                key={i}
-                className="glass rounded-2xl p-5"
-              >
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div
-                      className="grid h-10 w-10 shrink-0 place-items-center rounded-full font-bold text-white"
-                      style={{ background: gradientFor(r.name) }}
-                    >
-                      {r.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")
-                        .slice(0, 2)}
-                    </div>
-                    <div className="min-w-0">
-                      <div className="truncate text-sm font-bold">{r.name}</div>
-                      <div className="truncate text-xs text-muted-foreground">
-                        {r.course} · {r.year}
+          {reviews.length === 0 ? (
+            <p className="rounded-2xl border border-dashed border-border p-6 text-sm text-muted-foreground">
+              No verified student reviews yet for {college.name}. Be the first to share your experience.
+            </p>
+          ) : (
+            <div className="grid gap-4 sm:grid-cols-2">
+              {reviews.map((r) => (
+                <article key={r.id} className="glass rounded-2xl p-5">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex min-w-0 items-center gap-3">
+                      <div
+                        className="grid h-10 w-10 shrink-0 place-items-center rounded-full text-sm font-bold text-white"
+                        style={{ background: gradientFor(r.author_name) }}
+                        aria-hidden
+                      >
+                        {r.author_name
+                          .split(" ")
+                          .map((n) => n[0])
+                          .join("")
+                          .slice(0, 2)
+                          .toUpperCase()}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-1">
+                          <div className="truncate text-sm font-bold">{r.author_name}</div>
+                          <BadgeCheck
+                            className="h-4 w-4 shrink-0 text-primary"
+                            aria-label="Verified DU Student"
+                          />
+                        </div>
+                        {r.course && (
+                          <div className="truncate text-xs text-muted-foreground">{r.course}</div>
+                        )}
                       </div>
                     </div>
+                    <div className="flex items-center gap-1 text-sm font-bold text-[var(--gold)]">
+                      <Star className="h-4 w-4 fill-[var(--gold)]" />
+                      {Number(r.rating).toFixed(1)}
+                    </div>
                   </div>
-                  <QualityBadge rating={r.rating} />
-                </div>
-                <p className="mt-3 text-sm leading-relaxed">{r.text}</p>
-              </article>
-            ))}
-          </div>
+                  <p className="mt-3 text-sm leading-relaxed">{r.body}</p>
+                  <div className="mt-4 flex items-center justify-between gap-2">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-primary">
+                      <BadgeCheck className="h-3 w-3" /> Verified DU Student
+                    </span>
+                    <time className="text-xs text-muted-foreground" dateTime={r.created_at}>
+                      {formatReviewDate(r.created_at)}
+                    </time>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
         </Section>
+
 
         {/* Admission Insights */}
         <Section icon={<Info className="h-5 w-5" />} title="Admission Insights">
