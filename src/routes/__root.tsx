@@ -101,35 +101,46 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700;800;900&display=swap",
       },
     ],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Organization",
-              name: "DU Science Hub",
-              url: "https://du-student-spark.lovable.app",
-              description:
-                "Delhi University college discovery and senior-mentor guidance platform.",
-            },
-            {
-              "@type": "WebSite",
-              name: "DU Science Hub",
-              url: "https://du-student-spark.lovable.app",
-              potentialAction: {
-                "@type": "SearchAction",
-                target:
-                  "https://du-student-spark.lovable.app/colleges?q={search_term_string}",
-                "query-input": "required name=search_term_string",
-              },
-            },
-          ],
-        }),
-      },
-    ],
-  }),
+scripts: [
+  {
+    src: "https://www.googletagmanager.com/gtag/js?id=G-3JK4FY7K1T",
+    async: true,
+  },
+  {
+    children: `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3JK4FY7K1T');
+    `,
+  },
+  {
+    type: "application/ld+json",
+    children: JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          name: "DU Science Hub",
+          url: "https://du-student-spark.lovable.app",
+          description:
+            "Delhi University college discovery and senior-mentor guidance platform.",
+        },
+        {
+          "@type": "WebSite",
+          name: "DU Science Hub",
+          url: "https://du-student-spark.lovable.app",
+          potentialAction: {
+            "@type": "SearchAction",
+            target:
+              "https://du-student-spark.lovable.app/colleges?q={search_term_string}",
+            "query-input": "required name=search_term_string",
+          },
+        },
+      ],
+    }),
+  },
+],
 
   shellComponent: RootShell,
   component: RootComponent,
