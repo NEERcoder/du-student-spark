@@ -2,7 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
 import type { Database } from "@/integrations/supabase/types";
-
+import { reviews } from "@/data/reviews";
 /**
  * Public read-only server functions for the DU Science Hub data layer.
  * Uses the server publishable client (anon role) — Cloudflare Worker safe,
@@ -98,35 +98,17 @@ export const getCollegeBySlug = createServerFn({ method: "GET" })
 
 export const listApprovedReviews = createServerFn({ method: "GET" }).handler(
   async (): Promise<ReviewRow[]> => {
-    return [
-      {
-        id: "1",
-        college_name: "Bhaskaracharya College of Applied Sciences",
-        author_name: "Neha Verma",
-        course: "BSc Food Technology",
-        rating: 4.5,
-        body: "Food Technology at BCAS offers strong practical exposure. Industry visits and lab sessions were the highlight of my experience.",
-        created_at: "2026-06-01T00:00:00Z",
-      },
-      {
-        id: "2",
-        college_name: "Deen Dayal Upadhyaya College",
-        author_name: "Rahul Gupta",
-        course: "BSc Computer Science",
-        rating: 4.8,
-        body: "DDUC has a strong coding culture and supportive faculty. Many students actively participate in hackathons and internships.",
-        created_at: "2026-06-02T00:00:00Z",
-      },
-      {
-        id: "3",
-        college_name: "Shri Ram College of Commerce",
-        author_name: "Mohit Bansal",
-        course: "BCom Hons",
-        rating: 4.9,
-        body: "SRCC provides excellent networking opportunities and a strong alumni base. Placement season is intense but rewarding.",
-        created_at: "2026-06-03T00:00:00Z",
-      },
-    ];
+    return reviews.map((r, index) => ({
+      id: String(index + 1),
+      college_name: r.college,
+      author_name: r.name,
+      course: r.course ?? null,
+      rating: r.rating,
+      body: r.text,
+      created_at: new Date(
+        Date.now() - index * 86400000
+      ).toISOString(),
+    }));
   },
 );
 
