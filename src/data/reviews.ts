@@ -7,108 +7,355 @@ export type Review = {
 };
 
 export const reviews: Review[] = [
-  {
-    name: "Aarav",
-    college: "Hindu College",
-    course: "Economics Hons",
-    rating: 4.7,
-    text: "Hindu is honestly something else. The lawns, the canteen chatter, the random debates that happen between lectures — you genuinely learn more outside class than inside sometimes. Faculty is mostly solid, a couple are legendary. Attendance pressure exists but nobody really dies because of it.",
-  },
-  {
-    name: "Ishita",
-    college: "SRCC",
-    course: "BCom Hons",
-    rating: 4.9,
-    text: "If you're chasing finance/consulting, SRCC opens doors no other DU college can. Placements are insane but the pressure is real — you have to hustle from day 1. Societies are top tier. Only complaint: campus is small and gets crowded during fests.",
-  },
-  {
-    name: "Rohan",
-    college: "Hansraj College",
-    course: "Physics Hons",
-    rating: 4.6,
-    text: "Came here for physics and stayed for the people. Labs are decent, not the best, but profs actually care if you show interest. Mess food is mid. Metro is right next door which is a lifesaver.",
-  },
-  {
-    name: "Sanya",
-    college: "Miranda House",
-    course: "Political Science",
-    rating: 4.8,
-    text: "Miranda gave me a voice. Genuinely. The discussions in class, the society culture, Tempest — everything pushes you to think bigger. Hostel waitlist is brutal though, plan accordingly.",
-  },
-  {
-    name: "Kunal",
-    college: "Kirori Mal College",
-    course: "English Hons",
-    rating: 4.3,
-    text: "KMC has this raw, unfiltered DU vibe. The Players (theatre soc) alone is worth being here. Some faculty are amazing, some just read PPTs. Canteen is iconic — Nescafe at KMC hits different at 4pm.",
-  },
-  {
-    name: "Megha",
-    college: "Ramjas College",
-    rating: 4.2,
-    text: "Ramjas is chill but politics gets heated sometimes, especially around elections. Academically solid for humanities. Fest is fun. Infra could be better tbh, some classrooms feel ancient.",
-  },
-  {
-    name: "Devansh",
-    college: "Sri Venkateswara College",
-    course: "BCom",
-    rating: 4.4,
-    text: "Venky is underrated. South campus crowd, decent placements for commerce, and Nexus fest is legit one of the best. Profs are hit or miss. Society culture is strong if you put yourself out there.",
-  },
-  {
-    name: "Priya",
-    college: "Dyal Singh College",
-    course: "Journalism",
-    rating: 4.0,
-    text: "Honestly mixed feelings. Course content is okay, faculty mostly supportive. Crowd is diverse which I liked. But the campus is nothing fancy and internships you'll have to chase entirely on your own.",
-  },
-  {
-    name: "Aditya",
-    college: "ARSD College",
-    course: "Computer Science",
-    rating: 4.5,
-    text: "ARSD's CS dept has quietly become really good. Coding culture is picking up, decent placements last year. South campus location + metro = no commute pain. Library could be bigger.",
-  },
-  {
-    name: "Tanya",
-    college: "Daulat Ram College",
-    course: "Psychology",
-    rating: 4.1,
-    text: "DRC is calm, mostly girls who actually want to study. Psychology department is great, the prof discussions are something I'll miss. Canteen samosas are unreasonably good. Hostel is decent.",
-  },
-  {
-    name: "Riya",
-    college: "Gargi College",
-    course: "Sociology",
-    rating: 4.6,
-    text: "Reverie >>>. Gargi has this energy you can't fake. Faculty in sociology is sharp and they push you to read beyond the syllabus. Crowd outside the gate during fest week is wild though.",
-  },
-  {
-    name: "Mohit",
-    college: "Zakir Husain Delhi College",
-    course: "History",
-    rating: 4.0,
-    text: "Old building, old soul. Heritage campus genuinely feels different. Some faculty are gems, attendance is strict though. Not the flashiest college but you get a real DU experience here.",
-  },
-  {
-    name: "Nikita",
-    college: "CVS (College of Vocational Studies)",
-    course: "BMS",
-    rating: 4.2,
-    text: "CVS is solid for management courses, placements have improved a lot. South campus area is convenient. Crowd is friendly. Only thing — exposure depends a lot on which society you join, so pick wisely.",
-  },
-  {
-    name: "Harsh",
-    college: "Motilal Nehru College",
-    course: "B.A. Programme",
-    rating: 4.3,
-    text: "MLNC is way better than people think. Decent profs, active societies, and the morning/evening shift thing actually works in your favour if you intern on the side. Metro is close, that helps a lot.",
-  },
-  {
-    name: "Sneha",
-    college: "Deshbandhu College",
-    course: "Botany",
-    rating: 5.0,
-    text: "Honestly fell in love with DBC. Quiet campus, supportive faculty, and the botany lab is genuinely well equipped. Not the most hyped college but if you want to actually study without 24/7 chaos, it's perfect.",
-  },
+ {
+name: "Aditya Sharma",
+college: "Atma Ram Sanatan Dharma College",
+course: "BCom Hons",
+rating: 4.7,
+text: "ARSD has one of the best infrastructures in DU. The campus feels modern and societies are active throughout the year."
+},
+{
+name: "Neha Verma",
+college: "Bhaskaracharya College of Applied Sciences",
+course: "BSc Food Technology",
+rating: 4.5,
+text: "Food Technology at BCAS offers strong practical exposure. Industry visits and lab sessions were the highlight of my experience."
+},
+{
+name: "Rahul Gupta",
+college: "Deen Dayal Upadhyaya College",
+course: "BSc Computer Science",
+rating: 4.8,
+text: "DDUC has a strong coding culture and supportive faculty. Many students actively participate in hackathons and internships."
+},
+{
+name: "Ananya Singh",
+college: "Gargi College",
+course: "BA Psychology",
+rating: 4.6,
+text: "The psychology department is excellent. Faculty members encourage discussions and practical learning."
+},
+{
+name: "Karan Malhotra",
+college: "Hansraj College",
+course: "BSc Physics",
+rating: 4.8,
+text: "Hansraj offers a great balance between academics and extracurricular activities. The library is one of the best resources on campus."
+},
+{
+name: "Mehak Kapoor",
+college: "Hindu College",
+course: "BA Economics Hons",
+rating: 4.9,
+text: "The academic environment is highly competitive but motivating. Students are exposed to opportunities beyond the classroom."
+},
+{
+name: "Raghav Arora",
+college: "Kirori Mal College",
+course: "BA English Hons",
+rating: 4.4,
+text: "KMC has a vibrant theatre and society culture. The student crowd is energetic and welcoming."
+},
+{
+name: "Priya Menon",
+college: "Lady Shri Ram College",
+course: "BA Sociology",
+rating: 4.9,
+text: "LSR challenges you intellectually and personally. Society culture and networking opportunities are unmatched."
+},
+{
+name: "Harsh Jain",
+college: "Miranda House",
+course: "BSc Chemistry",
+rating: 4.8,
+text: "Faculty members are supportive and laboratories are well maintained. The campus atmosphere is inspiring."
+},
+{
+name: "Sakshi Yadav",
+college: "Ramjas College",
+course: "BA Political Science",
+rating: 4.3,
+text: "Ramjas has a strong society culture and a diverse student crowd. The college experience feels authentic."
+},
+{
+name: "Arjun Nair",
+college: "Sri Venkateswara College",
+course: "BCom Hons",
+rating: 4.5,
+text: "Venky is underrated. The placement support is improving and the campus environment is friendly."
+},
+{
+name: "Tanya Bhatia",
+college: "Shaheed Bhagat Singh College",
+course: "BCom Hons",
+rating: 4.4,
+text: "Commerce students get good exposure through seminars and placement activities. Faculty is approachable."
+},
+{
+name: "Vanshika Sharma",
+college: "Shaheed Sukhdev College of Business Studies",
+course: "BMS",
+rating: 4.9,
+text: "CBS is one of the best places in DU for management students. The peer group is highly ambitious."
+},
+{
+name: "Mohit Bansal",
+college: "Shri Ram College of Commerce",
+course: "BCom Hons",
+rating: 4.9,
+text: "SRCC provides excellent networking opportunities and a strong alumni base. Placement season is intense but rewarding."
+},
+{
+name: "Ayesha Khan",
+college: "St. Stephen's College",
+course: "BA English Hons",
+rating: 4.8,
+text: "The tutorial system encourages deeper learning. The campus has a unique academic culture."
+},
+{
+name: "Dev Chaudhary",
+college: "College of Vocational Studies",
+course: "BMS",
+rating: 4.4,
+text: "CVS is becoming increasingly popular for management studies. Placement support has improved significantly."
+},
+{
+name: "Ishita Gupta",
+college: "Deshbandhu College",
+course: "BSc Zoology",
+rating: 4.3,
+text: "Faculty members are supportive and laboratory facilities are good. The campus feels peaceful."
+},
+{
+name: "Lakshya Mehta",
+college: "Dyal Singh College",
+course: "BA Journalism",
+rating: 4.2,
+text: "The central location helps with internships and networking. Guest lectures are useful."
+},
+{
+name: "Muskan Arora",
+college: "Jesus and Mary College",
+course: "BA Psychology",
+rating: 4.7,
+text: "JMC offers a respectful and academically focused environment. Faculty support is excellent."
+},
+{
+name: "Simran Kaur",
+college: "Kamla Nehru College",
+course: "BA Political Science",
+rating: 4.4,
+text: "Political science discussions are engaging and society participation is encouraged."
+},
+{
+name: "Nitin Kumar",
+college: "Maitreyi College",
+course: "BSc Mathematics",
+rating: 4.2,
+text: "The teachers are approachable and students receive good academic guidance."
+},
+{
+name: "Khushi Aggarwal",
+college: "Daulat Ram College",
+course: "BA History",
+rating: 4.3,
+text: "DRC provides a supportive atmosphere and active cultural societies."
+},
+{
+name: "Yash Gupta",
+college: "Delhi College of Arts and Commerce",
+course: "BCom Hons",
+rating: 4.4,
+text: "The commerce department offers good career guidance and internship awareness."
+},
+{
+name: "Ritika Jain",
+college: "Indraprastha College for Women",
+course: "BA English Hons",
+rating: 4.7,
+text: "The heritage and academic culture make IPCW a memorable place to study."
+},
+{
+name: "Siddharth Joshi",
+college: "Keshav Mahavidyalaya",
+course: "BSc Computer Science",
+rating: 4.3,
+text: "The computer science department is growing rapidly and students are encouraged to participate in competitions."
+},
+{
+name: "Palak Gupta",
+college: "Lakshmibai College",
+course: "BA Programme",
+rating: 4.1,
+text: "The campus is welcoming and teachers are supportive of student initiatives."
+},
+{
+name: "Rohit Chauhan",
+college: "Maharaja Agrasen College",
+course: "BCom",
+rating: 4.2,
+text: "The college offers a balanced experience with academics, events and extracurricular opportunities."
+},
+{
+name: "Tanvi Khanna",
+college: "Mata Sundri College for Women",
+course: "BA Economics",
+rating: 4.3,
+text: "Small campus but strong faculty support. Students receive individual attention."
+},
+{
+name: "Parth Anand",
+college: "Motilal Nehru College",
+course: "BSc Computer Science",
+rating: 4.4,
+text: "The coding community is active and students regularly collaborate on projects."
+},
+{
+name: "Bhavya Sirohi",
+college: "PGDAV College",
+course: "BCom Hons",
+rating: 4.4,
+text: "PGDAV has a dedicated student community and good opportunities for commerce students."
+},
+{
+name: "Mayank Tomar",
+college: "Rajdhani College",
+course: "BA Programme",
+rating: 4.2,
+text: "The college has improved significantly in recent years with active societies and events."
+},
+{
+name: "Jiya Sondhi",
+college: "Ram Lal Anand College",
+course: "BCom Hons",
+rating: 4.4,
+text: "The infrastructure is modern and faculty members are approachable."
+},
+{
+name: "Aniket Joshi",
+college: "Ramanujan College",
+course: "BCom Programme",
+rating: 4.6,
+text: "Ramanujan is known for innovation and online learning initiatives. Students benefit from skill development programs."
+},
+{
+name: "Pooja Rathore",
+college: "Satyawati College",
+course: "BA History",
+rating: 4.1,
+text: "The student community is friendly and faculty members are supportive."
+},
+{
+name: "Rachit Bhalla",
+college: "Shivaji College",
+course: "BCom",
+rating: 4.3,
+text: "Shivaji offers a balanced college experience and active extracurricular participation."
+},
+{
+name: "Bhumika Chopra",
+college: "Sri Aurobindo College",
+course: "BA Programme",
+rating: 4.1,
+text: "The college has a relaxed environment and decent opportunities for growth."
+},
+{
+name: "Ridhi Tandon",
+college: "Sri Guru Gobind Singh College of Commerce",
+course: "BCom Hons",
+rating: 4.6,
+text: "The commerce ecosystem is strong and placement support is well organized."
+},
+{
+name: "Kritika Dsouza",
+college: "Sri Guru Nanak Dev Khalsa College",
+course: "BA Economics",
+rating: 4.4,
+text: "The economics department is active and regularly hosts academic events."
+},
+{
+name: "Naina Fernandes",
+college: "Sri Guru Tegh Bahadur Khalsa College",
+course: "BSc Electronics",
+rating: 4.5,
+text: "Strong academics and a welcoming campus environment make this college stand out."
+},
+{
+name: "Faizan Ahmed",
+college: "Swami Shraddhanand College",
+course: "BA Programme",
+rating: 4.0,
+text: "Students get ample opportunities to participate in societies and campus events."
+},
+{
+name: "Saba Qureshi",
+college: "Vivekananda College",
+course: "BA Psychology",
+rating: 4.3,
+text: "The psychology department is supportive and encourages practical learning."
+},
+{
+name: "Avani Kashyap",
+college: "Zakir Husain Delhi College",
+course: "BA Urdu",
+rating: 4.3,
+text: "The heritage campus and language departments offer a unique academic experience."
+},
+{
+name: "Gurleen Kaur",
+college: "Bhagini Nivedita College",
+course: "BA Programme",
+rating: 4.1,
+text: "A supportive environment with dedicated faculty and active student participation."
+},
+{
+name: "Harnoor Sandhu",
+college: "Bharati College",
+course: "BA English Hons",
+rating: 4.3,
+text: "The literature societies are active and students receive good academic support."
+},
+{
+name: "Aastha Bedi",
+college: "Aditi Mahavidyalaya",
+course: "BCom",
+rating: 4.0,
+text: "Teachers are supportive and the college provides a comfortable learning environment."
+},
+{
+name: "Vihaan Bansal",
+college: "Aryabhatta College",
+course: "BA Economics Hons",
+rating: 4.4,
+text: "Economics faculty is knowledgeable and guest lectures add significant value."
+},
+{
+name: "Aarohi Mittal",
+college: "Kalindi College",
+course: "BA Hindi Hons",
+rating: 4.2,
+text: "The Hindi department is passionate and creates a strong academic culture."
+},
+{
+name: "Reyansh Mathew",
+college: "Janki Devi Memorial College",
+course: "BCom Hons",
+rating: 4.3,
+text: "Students benefit from a friendly environment and regular extracurricular events."
+},
+{
+name: "Anaisha Thomas",
+college: "Lady Irwin College",
+course: "BSc Home Science",
+rating: 4.7,
+text: "Home Science programs are among the best in the country with excellent practical exposure."
+},
+{
+name: "Karan Sehgal",
+college: "Maharshi Valmiki College of Education",
+course: "B.Ed",
+rating: 4.1,
+text: "The teacher training programs are well structured and professionally useful."
+}
+
 ];
