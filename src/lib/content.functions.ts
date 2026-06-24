@@ -113,6 +113,29 @@ export const listApprovedReviews = createServerFn({ method: "GET" }).handler(
   },
 );
 
+export const listReviewsByCollegeSlug = createServerFn({ method: "GET" })
+  .inputValidator((input) => z.object({ slug: z.string().min(1) }).parse(input))
+  .handler(async ({ data }): Promise<ReviewRow[]> => {
+    const supabase = publicClient();
+    const { data: college } = await supabase
+      .from("colleges")
+      .select("id")
+      .eq("slug", data.slug)
+      .maybeSingle();
+    if (!college) return [];
+    const { data: rows, error } = await supabase
+      .from("reviews")
+      .select("id, college_name, author_name, course, rating, body, created_at")
+      .eq("status", "approved")
+      .eq("college_id", college.id)
+      .order("created_at", { ascending: false });
+    if (error) {
+      console.error("[listReviewsByCollegeSlug]", error);
+      return [];
+    }
+    return (rows ?? []) as ReviewRow[];
+  });
+
 export const listVerifiedMentors = createServerFn({ method: "GET" }).handler(
   async (): Promise<MentorRow[]> => {
     const supabase = publicClient();
