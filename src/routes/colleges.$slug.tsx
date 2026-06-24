@@ -9,12 +9,16 @@ import {
   Briefcase,
   Star,
   Info,
+  BadgeCheck,
 } from "lucide-react";
+import { useMemo } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { MentorCTA } from "@/components/MentorCTA";
 import { QualityBadge } from "@/components/QualityBadge";
 import { getCollegeBySlug } from "@/data/colleges";
+import { listReviewsByCollegeSlug } from "@/lib/content.functions";
 import { waLink, waMessages } from "@/lib/whatsapp";
 
 export const Route = createFileRoute("/colleges/$slug")({
