@@ -108,11 +108,11 @@ export function CollegeSearch({
   return (
     <div ref={wrapRef} className="relative w-full">
       <div
-        className={`flex items-center gap-3 rounded-2xl border border-border bg-card shadow-brand ring-1 ring-primary/10 ${
-          big ? "px-4 py-3 sm:px-5 sm:py-4" : "px-3 py-2.5"
+        className={`search-shell glass-strong flex items-center gap-3 rounded-2xl border border-white/10 ring-1 ring-primary/10 ${
+          big ? "px-4 py-3.5 sm:px-5 sm:py-4" : "px-3 py-2.5"
         }`}
       >
-        <Search className={`${big ? "h-6 w-6" : "h-5 w-5"} shrink-0 text-primary`} />
+        <Search className={`${big ? "h-5 w-5 sm:h-6 sm:w-6" : "h-5 w-5"} shrink-0 text-primary`} />
         <input
           value={q}
           onChange={(e) => {
@@ -123,7 +123,7 @@ export function CollegeSearch({
           onFocus={() => setOpen(true)}
           onKeyDown={onKey}
           placeholder={placeholder}
-          className={`w-full min-w-0 bg-transparent outline-none placeholder:text-muted-foreground ${
+          className={`w-full min-w-0 bg-transparent outline-none placeholder:text-muted-foreground/70 placeholder:font-medium ${
             big ? "text-base sm:text-lg" : "text-sm"
           }`}
           aria-label="Search DU colleges"
@@ -132,7 +132,7 @@ export function CollegeSearch({
           <button
             onClick={() => setQ("")}
             aria-label="Clear search"
-            className="rounded-md p-1 text-muted-foreground hover:bg-accent"
+            className="rounded-md p-1 text-muted-foreground transition hover:bg-accent hover:text-foreground"
           >
             <X className="h-4 w-4" />
           </button>
@@ -140,7 +140,7 @@ export function CollegeSearch({
       </div>
 
       {open && suggestions.length > 0 && (
-        <div className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 max-h-[60vh] overflow-y-auto rounded-2xl border border-border bg-popover p-2 shadow-2xl">
+        <div className="animate-pop-in absolute left-0 right-0 top-[calc(100%+10px)] z-50 max-h-[60vh] overflow-y-auto rounded-2xl border border-white/10 bg-popover/95 backdrop-blur-xl p-2 shadow-token-float">
           {suggestions.map((s, i) => (
             <button
               key={`${s.kind}-${s.label}-${i}`}
