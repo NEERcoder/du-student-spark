@@ -298,6 +298,63 @@
     filter: blur(40px);
   }
 
+  /* Slow animated mesh gradient — almost imperceptible */
+  .mesh-gradient {
+    background:
+      radial-gradient(40% 35% at 20% 30%, color-mix(in oklab, var(--brand) 55%, transparent), transparent 70%),
+      radial-gradient(35% 40% at 80% 20%, color-mix(in oklab, var(--primary) 45%, transparent), transparent 72%),
+      radial-gradient(45% 40% at 70% 80%, color-mix(in oklab, oklch(0.45 0.22 290) 55%, transparent), transparent 72%),
+      radial-gradient(40% 35% at 25% 85%, color-mix(in oklab, var(--brand) 50%, transparent), transparent 70%);
+    background-size: 180% 180%;
+    filter: blur(60px);
+    animation: mesh-drift 28s ease-in-out infinite;
+  }
+  @keyframes mesh-drift {
+    0%,100% { background-position: 0% 0%, 100% 0%, 100% 100%, 0% 100%; }
+    50%     { background-position: 20% 15%, 80% 25%, 75% 80%, 15% 85%; }
+  }
+
+  /* Aurora glow behind the headline */
+  .aurora-headline {
+    background:
+      radial-gradient(50% 60% at 50% 50%, color-mix(in oklab, var(--primary) 30%, transparent), transparent 70%),
+      radial-gradient(40% 50% at 30% 60%, color-mix(in oklab, oklch(0.5 0.22 286) 35%, transparent), transparent 72%);
+    filter: blur(50px);
+  }
+
+  /* Subtle noise texture */
+  .noise {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/></svg>");
+    opacity: .035;
+    mix-blend-mode: overlay;
+  }
+
+  /* Premium search bar focus state */
+  .search-shell {
+    transition: box-shadow .25s ease, border-color .25s ease, background-color .25s ease, transform .25s ease;
+  }
+  .search-shell:focus-within {
+    border-color: color-mix(in oklab, var(--primary) 55%, transparent);
+    background-color: color-mix(in oklab, var(--card) 92%, transparent);
+    box-shadow:
+      0 0 0 4px color-mix(in oklab, var(--primary) 18%, transparent),
+      0 24px 60px -24px color-mix(in oklab, var(--primary) 45%, transparent),
+      0 8px 24px -10px color-mix(in oklab, var(--brand) 40%, transparent);
+  }
+
+  @keyframes pop-in {
+    0% { opacity: 0; transform: translateY(-6px) scale(.985); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .animate-pop-in { animation: pop-in .18s cubic-bezier(.2,.7,.2,1) both; }
+
+  /* Scroll indicator */
+  @keyframes scroll-bob {
+    0%,100% { transform: translateY(0); opacity: .6; }
+    50%     { transform: translateY(6px); opacity: 1; }
+  }
+  .animate-scroll-bob { animation: scroll-bob 2.2s ease-in-out infinite; }
+
   /* Premium badge */
   .badge-premium {
     display: inline-flex; align-items: center; gap: .375rem;
