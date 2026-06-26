@@ -181,31 +181,80 @@
 
 @layer base {
   * { border-color: var(--color-border); }
+  html { -webkit-text-size-adjust: 100%; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-display);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "cv11", "ss01", "ss03";
+    line-height: 1.6;
+    background-image:
+      radial-gradient(60% 40% at 50% 0%, color-mix(in oklab, var(--primary) 7%, transparent), transparent 60%),
+      radial-gradient(50% 35% at 100% 20%, color-mix(in oklab, var(--brand) 10%, transparent), transparent 65%);
+    background-attachment: fixed;
   }
-  h1,h2,h3,h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  h1,h2,h3,h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.022em;
+    line-height: 1.1;
+    font-weight: 800;
+  }
+  h1 { letter-spacing: -0.03em; }
+  p { line-height: 1.65; }
+  ::selection { background: color-mix(in oklab, var(--primary) 35%, transparent); color: var(--foreground); }
+  :focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; border-radius: var(--radius-xs); }
 }
 
 @layer utilities {
+  /* Refined surfaces */
+  .surface-1 { background: var(--surface-1); }
+  .surface-2 { background: var(--surface-2); }
+  .surface-3 { background: var(--surface-3); }
+  .surface-gradient { background: var(--gradient-surface); }
+
+  /* Shadow tokens */
+  .shadow-token-xs { box-shadow: var(--shadow-xs); }
+  .shadow-token-sm { box-shadow: var(--shadow-sm); }
+  .shadow-token-md { box-shadow: var(--shadow-md); }
+  .shadow-token-lg { box-shadow: var(--shadow-lg); }
+  .shadow-token-float { box-shadow: var(--shadow-float); }
+
+  /* Premium card preset */
+  .card-premium {
+    background: var(--gradient-surface);
+    border: 1px solid color-mix(in oklab, var(--foreground) 8%, transparent);
+    border-radius: var(--radius-lg-token);
+    box-shadow: var(--shadow-sm);
+    transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease, border-color .35s ease;
+  }
+  .card-premium:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: color-mix(in oklab, var(--primary) 25%, transparent);
+  }
+
   .glass {
-    background: color-mix(in oklab, var(--card) 70%, transparent);
-    backdrop-filter: blur(14px) saturate(140%);
+    background: color-mix(in oklab, var(--card) 65%, transparent);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
     border: 1px solid color-mix(in oklab, var(--foreground) 8%, transparent);
   }
   .glass-strong {
-    background: color-mix(in oklab, var(--card) 85%, transparent);
-    backdrop-filter: blur(20px) saturate(160%);
+    background: color-mix(in oklab, var(--card) 82%, transparent);
+    backdrop-filter: blur(22px) saturate(170%);
+    -webkit-backdrop-filter: blur(22px) saturate(170%);
     border: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
   }
   .brand-gradient {
-    background: linear-gradient(135deg, oklch(0.32 0.13 260), oklch(0.5 0.22 18));
+    background: var(--gradient-brand);
   }
   .text-gradient-brand {
-    background: linear-gradient(90deg, oklch(0.42 0.18 265), oklch(0.6 0.24 20), oklch(0.72 0.18 50));
+    background: linear-gradient(90deg,
+      color-mix(in oklab, var(--brand) 90%, white 10%),
+      color-mix(in oklab, var(--primary) 85%, white 5%),
+      oklch(0.72 0.18 50));
     background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -228,7 +277,7 @@
   }
   .hover-lift:hover {
     transform: translateY(-4px);
-    box-shadow: 0 24px 60px -22px color-mix(in oklab, var(--brand) 55%, transparent);
+    box-shadow: var(--shadow-lg);
   }
   .shine {
     position: relative; overflow: hidden; isolation: isolate;
@@ -247,6 +296,17 @@
       radial-gradient(50% 45% at 85% 30%, color-mix(in oklab, var(--brand) 40%, transparent), transparent 65%),
       radial-gradient(55% 50% at 50% 100%, color-mix(in oklab, var(--gold) 25%, transparent), transparent 70%);
     filter: blur(40px);
+  }
+
+  /* Premium badge */
+  .badge-premium {
+    display: inline-flex; align-items: center; gap: .375rem;
+    padding: .25rem .625rem;
+    font-size: .6875rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+    border-radius: 9999px;
+    background: color-mix(in oklab, var(--primary) 12%, transparent);
+    color: color-mix(in oklab, var(--primary) 85%, var(--foreground));
+    border: 1px solid color-mix(in oklab, var(--primary) 25%, transparent);
   }
 }
 
