@@ -412,7 +412,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee, .animate-float, .animate-glow, .animate-gradient,
-  .animate-blur-in, .animate-slide-up, .text-gradient-brand {
+  .animate-blur-in, .animate-slide-up, .animate-float-slow, .animate-float-slower,
+  .animate-scroll-bob, .mesh-gradient, .text-gradient-brand {
     animation: none !important;
   }
   .hover-lift { transition: none; }
