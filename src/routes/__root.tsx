@@ -141,6 +141,8 @@ scripts: [
     }),
   },
 ],
+  }),
+
 
   shellComponent: RootShell,
   component: RootComponent,
