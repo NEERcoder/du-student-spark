@@ -408,12 +408,39 @@
   .delay-200 { animation-delay: .2s; }
   .delay-300 { animation-delay: .3s; }
   .delay-500 { animation-delay: .5s; }
+
+  /* Hide scrollbar for the auto-scrolling video carousel while keeping it
+     natively touch/drag scrollable (used by StudentVideoReviews) */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Shimmer skeleton loader — used while thumbnails/images load so
+     nothing shows blank space */
+  .skeleton-shimmer {
+    background: linear-gradient(
+      100deg,
+      color-mix(in oklab, var(--muted) 100%, transparent) 30%,
+      color-mix(in oklab, var(--foreground) 8%, var(--muted)) 50%,
+      color-mix(in oklab, var(--muted) 100%, transparent) 70%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.6s ease-in-out infinite;
+  }
+  @keyframes shimmer {
+    0% { background-position: 150% 0; }
+    100% { background-position: -50% 0; }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee, .animate-float, .animate-glow, .animate-gradient,
   .animate-blur-in, .animate-slide-up, .animate-float-slow, .animate-float-slower,
-  .animate-scroll-bob, .mesh-gradient, .text-gradient-brand {
+  .animate-scroll-bob, .mesh-gradient, .text-gradient-brand, .skeleton-shimmer {
     animation: none !important;
   }
   .hover-lift { transition: none; }

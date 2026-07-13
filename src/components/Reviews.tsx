@@ -38,7 +38,7 @@ function Stars({ rating }: { rating: number }) {
 }
 
 export function Reviews() {
-  const { data: reviews = [] } = useQuery({
+  const { data: reviews = [], isLoading } = useQuery({
     queryKey: ["reviews", "approved"],
     queryFn: () => listApprovedReviews(),
     staleTime: 60_000,
@@ -59,7 +59,7 @@ export function Reviews() {
     // Fisher-Yates with seeded order based on id hash for stable-but-random feel
     const arr = [...unique];
     for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor((Math.sin(i * 9301 + 49297) + 1) / 2 * (i + 1));
+      const j = Math.floor(((Math.sin(i * 9301 + 49297) + 1) / 2) * (i + 1));
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
     return arr;
@@ -68,14 +68,38 @@ export function Reviews() {
   return (
     <section id="reviews" className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-24">
       <div className="mx-auto max-w-2xl text-center">
-        <span className="text-xs font-bold uppercase tracking-wider text-primary">Student reviews</span>
+        <span className="text-xs font-bold uppercase tracking-wider text-primary">
+          Student reviews
+        </span>
         <h2 className="mt-2 text-3xl font-extrabold sm:text-4xl">What DU students actually say</h2>
         <p className="mt-3 text-muted-foreground">
-          Unfiltered reviews from verified students across Delhi University — the good, the messy, the real.
+          Unfiltered reviews from verified students across Delhi University — the good, the messy,
+          the real.
         </p>
       </div>
-      {displayed.length === 0 ? (
-        <p className="mt-12 text-center text-sm text-muted-foreground">Loading community reviews…</p>
+      {isLoading ? (
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {[0, 1, 2, 3, 4, 5].map((i) => (
+            <div key={i} className="rounded-2xl border border-border bg-card p-5 shadow-sm">
+              <div className="flex items-center gap-3">
+                <div className="skeleton-shimmer h-10 w-10 shrink-0 rounded-full" />
+                <div className="min-w-0 flex-1 space-y-2">
+                  <div className="skeleton-shimmer h-3 w-2/3 rounded-full" />
+                  <div className="skeleton-shimmer h-2.5 w-1/2 rounded-full" />
+                </div>
+              </div>
+              <div className="mt-4 space-y-2">
+                <div className="skeleton-shimmer h-3 w-full rounded-full" />
+                <div className="skeleton-shimmer h-3 w-5/6 rounded-full" />
+                <div className="skeleton-shimmer h-3 w-2/3 rounded-full" />
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : displayed.length === 0 ? (
+        <p className="mt-12 text-center text-sm text-muted-foreground">
+          No community reviews yet — be the first to share one!
+        </p>
       ) : (
         <div className="mt-12 columns-1 gap-6 sm:columns-2 lg:columns-3 [column-fill:_balance]">
           {displayed.map((r) => (

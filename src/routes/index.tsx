@@ -7,8 +7,12 @@ import { CourseExplorerPreview } from "@/components/CourseExplorerPreview";
 import { FreeGuidance } from "@/components/FreeGuidance";
 import { Features } from "@/components/Features";
 import { Reviews } from "@/components/Reviews";
+import { StudentVideoReviews } from "@/components/StudentVideoReviews";
+import { CampusReviewerCTA } from "@/components/CampusReviewerCTA";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
+import { Reveal } from "@/components/Reveal";
+import { BackToTop } from "@/components/BackToTop";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -41,14 +45,33 @@ function Index() {
       <main>
         <CollegeHero />
         <StatsStrip />
-        <FeaturedColleges />
-        <CourseExplorerPreview />
-        <FreeGuidance />
-        <Features />
-        <Reviews />
-        <CTA />
+        <Reveal>
+          <FeaturedColleges />
+        </Reveal>
+        <Reveal>
+          <CourseExplorerPreview />
+        </Reveal>
+        <Reveal>
+          <FreeGuidance />
+        </Reveal>
+        <Reveal>
+          <Features />
+        </Reveal>
+        <Reveal>
+          <Reviews />
+        </Reveal>
+        <Reveal>
+          <StudentVideoReviews />
+        </Reveal>
+        <Reveal>
+          <CampusReviewerCTA />
+        </Reveal>
+        <Reveal>
+          <CTA />
+        </Reveal>
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 }
