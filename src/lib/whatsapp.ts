@@ -1,4 +1,4 @@
-import { WHATSAPP_LINK } from "./links";
+import { WHATSAP_LINK } from "./links";
 
 export function waLink(message?: string): string {
   if (!message) return WHATSAPP_LINK;
