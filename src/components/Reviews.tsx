@@ -130,7 +130,17 @@ export function Reviews() {
                 </div>
                 <Stars rating={Number(r.rating)} />
               </div>
-              <p className="mt-4 text-sm leading-relaxed text-foreground/85">{r.body}</p>
+             <p
+  className="mt-4 text-base"
+  style={{
+    color: "red",
+    fontSize: "18px",
+    fontWeight: "700",
+    display: "block",
+  }}
+>
+  THIS IS TEST TEXT
+</p>
               <div className="mt-4 flex items-center justify-between gap-2">
                 <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-primary">
                   <BadgeCheck className="h-3 w-3" /> Verified DU Student
