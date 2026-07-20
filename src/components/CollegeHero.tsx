@@ -67,13 +67,13 @@ export function CollegeHero() {
             href={waLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="shine inline-flex items-center gap-2 rounded-xl bg-gradient-to-br from-primary to-[color-mix(in_oklab,var(--primary)_70%,var(--brand))] px-6 py-3 text-sm font-bold text-primary-foreground shadow-brand transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-glow active:translate-y-0 active:scale-[0.98]"
+            className="shine btn-premium inline-flex items-center gap-2 rounded-xl bg-gradient-to-br from-primary to-[color-mix(in_oklab,var(--primary)_70%,var(--brand))] px-6 py-3 text-sm font-bold text-primary-foreground shadow-brand transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-glow active:translate-y-0 active:scale-[0.98]"
           >
             <MessageCircle className="h-5 w-5" /> Talk to a Senior
           </a>
           <Link
             to="/colleges"
-            className="shine inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md px-6 py-3 text-sm font-bold transition-[transform,box-shadow,background] duration-200 hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-token-md active:translate-y-0 active:scale-[0.98]"
+            className="shine btn-premium inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md px-6 py-3 text-sm font-bold transition-[transform,box-shadow,background] duration-200 hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-token-md active:translate-y-0 active:scale-[0.98]"
           >
             <Compass className="h-5 w-5" /> Explore Colleges
           </Link>
@@ -81,7 +81,7 @@ export function CollegeHero() {
             href="https://www.youtube.com/@DUScienceHub"
             target="_blank"
             rel="noopener noreferrer"
-            className="shine inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-md px-6 py-3 text-sm font-bold text-foreground/90 transition-[transform,box-shadow,background] duration-200 hover:-translate-y-0.5 hover:bg-white/10 active:translate-y-0 active:scale-[0.98]"
+            className="shine btn-premium inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-md px-6 py-3 text-sm font-bold text-foreground/90 transition-[transform,box-shadow,background] duration-200 hover:-translate-y-0.5 hover:bg-white/10 active:translate-y-0 active:scale-[0.98]"
           >
             <Youtube className="h-5 w-5 text-red-500" /> Watch on YouTube
           </a>

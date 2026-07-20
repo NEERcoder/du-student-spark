@@ -67,6 +67,10 @@ export function Reviews() {
 
   return (
     <section id="reviews" className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-24">
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-30" aria-hidden="true">
+        <div className="light-spot left-[10%] top-[20%] h-64 w-64 bg-primary/25" />
+        <div className="light-spot right-[10%] bottom-[10%] h-64 w-64 bg-brand/20" />
+      </div>
       <div className="mx-auto max-w-2xl text-center">
         <span className="text-xs font-bold uppercase tracking-wider text-primary">
           Student reviews
@@ -105,11 +109,12 @@ export function Reviews() {
           {displayed.map((r) => (
             <article
               key={r.id}
-              className="mb-6 break-inside-avoid rounded-2xl border border-border bg-card p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-brand glass"
+              className="group glass hover-lift border-gradient-hover relative mb-6 break-inside-avoid overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-sm"
             >
+              <Quote className="absolute right-4 top-4 h-8 w-8 text-primary/10 transition-colors group-hover:text-primary/20" />
               <div className="flex items-center gap-3">
                 <div
-                  className="grid h-10 w-10 shrink-0 place-items-center rounded-full text-sm font-bold text-white"
+                  className="avatar-glow grid h-10 w-10 shrink-0 place-items-center rounded-full text-sm font-bold text-white transition-transform duration-300 group-hover:scale-110"
                   style={{ background: gradientFor(r.author_name) }}
                   aria-hidden
                 >
@@ -119,7 +124,7 @@ export function Reviews() {
                   <div className="flex items-center gap-1">
                     <p className="truncate text-sm font-bold">{r.author_name}</p>
                     <BadgeCheck
-                      className="h-4 w-4 shrink-0 text-primary"
+                      className="verified-pulse h-4 w-4 shrink-0 text-primary"
                       aria-label="Verified DU Student"
                     />
                   </div>

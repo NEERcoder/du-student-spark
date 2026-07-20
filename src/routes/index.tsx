@@ -46,6 +46,9 @@ function Index() {
         <CollegeHero />
         <StatsStrip />
         <Reveal>
+          <StudentVideoReviews />
+        </Reveal>
+        <Reveal>
           <FeaturedColleges />
         </Reveal>
         <Reveal>
@@ -59,9 +62,6 @@ function Index() {
         </Reveal>
         <Reveal>
           <Reviews />
-        </Reveal>
-        <Reveal>
-          <StudentVideoReviews />
         </Reveal>
         <Reveal>
           <CampusReviewerCTA />

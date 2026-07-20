@@ -79,11 +79,10 @@ function VideoCard({
     <button
       type="button"
       onClick={() => onPlay(video)}
-      className="ring-gradient shine group/card glass hover-lift relative w-[260px] shrink-0 overflow-hidden rounded-2xl text-left shadow-token-sm transition-[transform,box-shadow] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:w-[300px]"
+      className="ring-gradient shine group/card tilt-hover glass relative w-[280px] shrink-0 overflow-hidden rounded-2xl text-left shadow-token-sm transition-[transform,box-shadow] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:w-[340px]"
       aria-label={`Play video review: ${video.collegeName}, ${video.course}`}
     >
       <div className="relative aspect-video w-full overflow-hidden bg-muted">
-        {/* Skeleton shimmer shown until the thumbnail has actually loaded */}
         {!loaded && thumb && (
           <div className="skeleton-shimmer absolute inset-0" aria-hidden="true" />
         )}
@@ -104,10 +103,12 @@ function VideoCard({
             <Youtube className="h-8 w-8 text-white/80" />
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
-        {/* Play button */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        {/* Soft reflection on bottom */}
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white/5 to-transparent opacity-0 transition-opacity duration-500 group-hover/card:opacity-100" aria-hidden="true" />
+        {/* Play button with pulse */}
         <span className="absolute inset-0 flex items-center justify-center">
-          <span className="grid h-14 w-14 place-items-center rounded-full bg-white/10 shadow-glow backdrop-blur-md ring-1 ring-white/25 transition-all duration-300 group-hover/card:scale-110 group-hover/card:bg-primary/90">
+          <span className="play-pulse grid h-14 w-14 place-items-center rounded-full bg-white/10 shadow-glow backdrop-blur-md ring-1 ring-white/25 transition-all duration-300 group-hover/card:scale-110 group-hover/card:bg-primary/90">
             <Play className="h-6 w-6 translate-x-0.5 fill-white text-white" />
           </span>
         </span>
@@ -115,12 +116,12 @@ function VideoCard({
         <span className="absolute bottom-2 right-2 inline-flex items-center gap-1 rounded-full bg-black/70 px-2 py-0.5 text-[10px] font-bold text-white backdrop-blur-sm">
           <Clock3 className="h-3 w-3" /> {video.duration}
         </span>
-        {/* Verified badge — icon gently pulses to draw the eye */}
+        {/* Verified badge */}
         <span className="badge-premium absolute left-2 top-2 !border-white/20 !bg-black/50 !text-white backdrop-blur-sm">
           <Youtube className="h-3 w-3 animate-glow text-red-500" /> Video review
         </span>
       </div>
-      <div className="p-3.5">
+      <div className="p-4">
         <p className="truncate text-sm font-extrabold">{video.collegeName}</p>
         <p className="mt-0.5 flex items-center gap-1 truncate text-xs text-muted-foreground">
           <GraduationCap className="h-3.5 w-3.5 shrink-0" /> {video.course}

@@ -58,7 +58,7 @@ export function Navbar() {
               className="group relative text-sm font-semibold text-foreground/80 transition-colors hover:text-primary"
             >
               {n.label}
-              <span className="pointer-events-none absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 rounded-full bg-primary transition-transform duration-300 group-hover:scale-x-100" />
+              <span className="pointer-events-none absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 rounded-full bg-primary transition-transform duration-300 group-hover:scale-x-100 group-[.active]:scale-x-100" />
             </Link>
           ))}
           {anchors.map((n) => (
